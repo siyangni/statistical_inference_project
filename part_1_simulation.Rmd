@@ -7,7 +7,7 @@ fontsize: 12pt
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, fig.width=4, fig.height=2)
+knitr::opts_chunk$set(echo = TRUE, fig.width=6, fig.height=3)
 ```
 
 # 1. Overview
