@@ -6,8 +6,11 @@ output: pdf_document
 fontsize: 12pt
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, fig.width=6, fig.height=3)
+```{r, echo=FALSE,message=FALSE,warning=FALSE}
+library(knitr)
+library(formatR)
+knitr::opts_chunk$set(echo = TRUE, fig.width=8, fig.height=4)
+opts_chunk$set(tidy.opts=list(width.cutoff=60),tidy=TRUE)
 ```
 
 # 1. Overview
@@ -79,7 +82,7 @@ g = g + geom_histogram(binwidth = 0.2, fill='lightblue', color='blue',
                        alpha=.7)
 g = g + geom_vline(xintercept=sim_mean, col='red', size=1)
 g = g + geom_vline(xintercept=theo_mean, col='green', size=1)
-g = g + labs(title = "Histogram of Simulated Average of Exponential Distribution", x="Simulated Average", y="Count")
+g = g + labs(title = "Simulated Average of Exponential Distribution", x="Simulated Average", y="Count")
 g
 ```
 
@@ -121,9 +124,9 @@ We fit the theoretical normal curve to the histogram of the simulated distributi
 
 ```{r}
 g2 = ggplot(data=sim_avg1, aes(x=sim_avg))
-g2 = g2 + geom_histogram(aes(y=..density..), binwidth = 0.2, fill='lightblue', color='blue',
-                       alpha=.7)
-g2 = g2 + stat_function(color='aquamarine', size = 2,fun = dnorm, n = 1000, args = list(mean = 1/lambda, sd = sqrt(theo_var))) + ylab("") + scale_y_continuous(breaks = NULL)
+g2 = g2 + geom_histogram(aes(y=..density..), binwidth = 0.2,    fill='lightblue',color='blue',alpha=.7)      
+g2 = g2 + stat_function(color='aquamarine', size = 2,fun = dnorm,n = 1000, 
+                        args = list(mean = 1/lambda, sd = sqrt(theo_var))) + ylab("") + scale_y_continuous(breaks = NULL)
 g2
 ```
 

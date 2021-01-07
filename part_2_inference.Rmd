@@ -6,8 +6,11 @@ output: pdf_document
 fontsize: 12pt
 ---
 
-```{r setup, include=FALSE}
+```{r, echo=FALSE,message=FALSE,warning=FALSE}
+library(knitr)
+library(formatR)
 knitr::opts_chunk$set(echo = TRUE)
+opts_chunk$set(tidy.opts=list(width.cutoff=60),tidy=TRUE)
 ```
 
 # 1. Overview
@@ -60,8 +63,7 @@ The visualization result illustrates:
 
 ```{r}
 g = ggplot(df, aes(factor(dose), len, fill=factor(dose)))
-g = g + geom_boxplot() + facet_grid(.~supp)
-g = g + labs(x = 'Dosage', y = 'Length', title = "Tooth Growth by Dosage and Supplement Type")
+g = g + geom_boxplot() + facet_grid(.~supp) + labs(x = 'Dosage', y = 'Length', title = "Tooth Growth by Dosage and Supplement Type")
 g = g + scale_fill_manual(values = c("#00AFBB", "#E7B800", "#FC4E07"))
 g
 ```
